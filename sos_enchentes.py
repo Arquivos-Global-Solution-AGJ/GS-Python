@@ -1,64 +1,119 @@
+import random
+import time
+
+# Base de dados simulada de bairros em risco
+bairros_de_risco = {
+    'chácara santo antônio': 'risco alto',
+    'bosque da saúde': 'risco médio',
+    'campo limpo': 'risco alto',
+    'capela do socorro': 'risco alto',
+    'm\'boi mirim': 'risco alto',
+    'santo amaro': 'risco médio',
+    'parelheiros': 'risco alto',
+    'jardim emburá': 'risco alto',
+    'itaquera': 'risco médio',
+    'aricanduva': 'risco médio',
+    'jardim romano': 'risco alto',
+    'freguesia do ó': 'risco médio',
+    'pirituba': 'risco médio',
+    'butantã': 'risco baixo',
+    'lapa': 'risco baixo',
+    'sé': 'risco baixo'
+}
+
+# Dados colaborativos dos usuários
+bairros_colaborativos = {}
+
 def menu_principal():
-    print("---Bem vindo(a) ao sistema do SOS ENCHENTES---\n")
-    print("(1) Minha área corre risco de inundar? \n(2) Como posso me proteger de possíveis inundações? \n(3) Agora está perigoso? \n(4) Precisa de ajuda? contate-nos IMEDIATAMENTE \n(5) Sair")
-        
-        
-def escolha_menu():       
-    while True:
-        escolha = int(input())
-        if escolha == 1:
-            minha_area()
-        elif escolha == 2:
-            me_proteger()
-        elif escolha == 3:
-            situacao_atual()
-        elif escolha == 4:
-            contatos()
-        elif escolha == 5:
-            print("Obrigado por usar o SOS enchentes.")
-            break
-            return escolha
-        else:
-            print("Opção inexistente, digite de 1 a 5.")
+    print("\n---🌧️ SOS ENCHENTES - Sistema de Apoio em Desastres Naturais 🌧️---")
+    print("1️⃣ - Verificar risco de inundação na sua área")
+    print("2️⃣ - Dicas de proteção e segurança")
+    print("3️⃣ - Consultar situação atual (alerta antecipado)")
+    print("4️⃣ - Relatar problema na sua região (mapeamento colaborativo)")
+    print("5️⃣ - Contatos de emergência")
+    print("6️⃣ - Sair")
+    print("------------------------------------------------------------")
 
-##função minha_area
+def escolha_menu():
+    try:
+        escolha = int(input("Escolha uma opção (1 a 6): "))
+        return escolha
+    except ValueError:
+        print("⚠️ Digite apenas números.")
+        return None
+
 def minha_area():
-    print("Inicialmente voltado para a cidade de São Paulo!")
-    bairro = input("\nDigite seu bairro: ").strip().lower()
-    bairros_de_risco = ['chácara santo antônio', 'bosque da saúde', 'campo limpo', 'capela do socorro','m\'boi mirim', 'santo amaro', 'parelheiros', 'jardim emburá','itaquera', 'aricanduva', 'vila formosa', 'penha', 'mooca', 'jardim romano','vila maria', 'vila guilherme', 'santana', 'tucuruvi', 'jaçanã', 'tremembé','freguesia do ó', 'pirituba', 'jaraguá', 'jardim guançã','butantã', 'lapa', 'pinheiros', 'sé']
+    bairro = input("Digite seu bairro: ").strip().lower()
+
     if bairro in bairros_de_risco:
-        print("\n⚠️ -Cuidado! Essa área é considera de fácil alagamento\n\n")
+        print(f"\n⚠️ ALERTA: Sua área ({bairro.title()}) tem {bairros_de_risco[bairro]} risco de alagamento!\n")
+    elif bairro in bairros_colaborativos:
+        print(f"\n🔎 ⚠️ Alerta colaborativo: Usuários reportaram {bairros_colaborativos[bairro]} na sua região.\n")
     else:
-        print("\nEssa área não é considerada de fácil alagamento, mas pode ocorrer, fique atento!\n\n")
-    menu_principal()
+        print("\n✅ Sua área não consta como de risco elevado no momento, mas continue atento às previsões e alertas.\n")
 
-##Função me_proteger
 def me_proteger():
-    print("\n\nSe você escolheu essa opção. Fique atento as instruções \n\n ANTES DA INUNDAÇÃO: \n -Monitore alertas meteorológicos\n -Tenha um plano de evacuação – Saiba quais rotas usar e onde estão os abrigos mais próximos.\n -Monte um kit de emergência – Inclua água potável, alimentos não perecíveis, lanternas, pilhas, rádio, documentos importantes, remédios, roupas extras e itens de higiene.\n -Desconecte aparelhos elétricos – Evite riscos de curtos-circuitos ou choques.\n -Avalie a estrutura da sua casa – Se for uma área de risco, considere sair antes do alagamento.\n\n ⚠️--DURANTE A INUNDAÇÃO--⚠️:\n -Mantenha a calma e acione a Defesa Civil (199) ou Corpo de Bombeiros (193).\n -Saia do local se as autoridades pedirem.\n -Nunca tente atravessar áreas alagadas a pé ou de carro. \n\n DEPOIS DA INUNDAÇÃO: \n -Espere autorização das autoridades para retornar ao imóvel.\n -Evite contato com a água residual.\n -Atualize seus documentos e registre os danos, caso precise de apoio do governo ou seguro.\n\n Essas instruções são conferidas por especialistas, proteja-se, a natureza não brinca!\n\n")
-    menu_principal()
+    print("""
+🛡️  Dicas de Proteção e Segurança:
 
-##função situacao_atual
+ANTES DA INUNDAÇÃO:
+✅ Monitore alertas meteorológicos.
+✅ Tenha um plano de evacuação.
+✅ Monte um kit de emergência.
+✅ Desligue energia elétrica e gás se necessário.
+✅ Proteja seus móveis com suportes elevados.
+
+DURANTE A INUNDAÇÃO:
+🚨 Siga as orientações da Defesa Civil (199) e Bombeiros (193).
+🚫 Nunca tente atravessar áreas alagadas, nem a pé nem de carro.
+🆘 Vá para lugares altos.
+
+DEPOIS DA INUNDAÇÃO:
+🔧 Limpe e desinfete seu imóvel.
+📜 Documente os danos para seguro ou ajuda governamental.
+🩺 Verifique riscos sanitários (água contaminada).
+""")
+
 def situacao_atual():
-    import random 
-    risco = random.choice(['baixo', 'moderado' , 'alto'])
+    risco = random.choice(['baixo', 'moderado', 'alto'])
+    print("\n📡 Analisando dados meteorológicos...")
+    time.sleep(2)
+
     if risco == "alto":
-        print("\n 🚨 -Alerta! Chuva forte nas próximas horas com risco de alagamento, fique atento(a)!\n\n")
+        print("\n🚨 ALERTA VERMELHO: Chuvas intensas nas próximas horas. Alto risco de enchentes. Aja com cautela!")
     elif risco == "moderado":
-        print("\n⚠️ -Atenção: Chuva moderada prevista nas próximas horas, fique atento(a)!\n\n")
+        print("\n⚠️ ALERTA AMARELO: Chuva moderada prevista. Atenção a possíveis pontos de alagamento.")
     else:
-        print("\n☀️ -Sem chuva prevista para as próximas horas, aproveite o dia!\n\n")
-    menu_principal()
+        print("\n☀️ Céu limpo! Sem risco de alagamentos nas próximas horas. Aproveite com responsabilidade.")
 
-##função contatos
+def relatar_problema():
+    bairro = input("Digite o nome do bairro onde há problemas: ").strip().lower()
+    problema = input("Descreva brevemente o problema (ex: 'alagamento', 'deslizamento', 'enxurrada'): ").strip().lower()
+
+    bairros_colaborativos[bairro] = problema
+    print(f"\n📍 Obrigado! Seu relato sobre '{problema}' no bairro '{bairro.title()}' foi registrado e ajudará outras pessoas.\n")
+
 def contatos():
-    print("---CONTATOS QUE VOCÊ PODE LIGAR NA EMERGÊNCIA---\n\n Defesa Civil – 199 \n Polícia Militar – 190 \n Bombeiros – 193 \n SAMU – 192\n\n Ao telefonar:\n -Fique calmo\n -Identifique-se fornecendo o nome e o telefone de contato\n -Diga exatamente o que está acontecendo\n -Informe se há vítimas. Havendo, forneça precisamente o número de pessoas\n -Forneça corretamente o endereço e, se possível, uma ou mais referências\n\n")
-    menu_principal()
+    print("""
+📞 CONTATOS DE EMERGÊNCIA:
+- Defesa Civil: 199
+- Corpo de Bombeiros: 193
+- Polícia Militar: 190
+- SAMU (ambulância): 192
 
-##função main
+📝 Ao ligar:
+- Fique calmo(a).
+- Informe seu nome e telefone.
+- Descreva claramente o problema e a localização exata.
+- Diga se há vítimas e quantas.
+- Forneça pontos de referência.
+""")
+
 def main():
     while True:
         menu_principal()
         opcao = escolha_menu()
+
         if opcao == 1:
             minha_area()
         elif opcao == 2:
@@ -66,8 +121,13 @@ def main():
         elif opcao == 3:
             situacao_atual()
         elif opcao == 4:
+            relatar_problema()
+        elif opcao == 5:
             contatos()
-        else:
+        elif opcao == 6:
+            print("\n👋 Obrigado por usar o SOS ENCHENTES. Fique seguro(a) e atento(a)!")
             break
-            
+        else:
+            print("❌ Opção inválida. Digite um número de 1 a 6.")
+
 main()
