@@ -19,9 +19,7 @@ def menu_principal():
 def minha_area():
     print("Inicialmente voltado para a cidade de São Paulo!")
     bairro = input("\nDigite seu bairro: ").strip().lower()
-    bairros_de_risco = ['chácara santo antônio', 'bosque da saúde', 'campo limpo', 'capela do socorro','m\'boi mirim', 'santo amaro', 'parelheiros', 'jardim emburá',
-    'itaquera', 'aricanduva', 'vila formosa', 'penha', 'mooca', 'jardim romano','vila maria', 'vila guilherme', 'santana', 'tucuruvi', 'jaçanã', 'tremembé','freguesia do ó', 'pirituba', 'jaraguá', 'jardim guançã',
-    'butantã', 'lapa', 'pinheiros', 'sé']
+    bairros_de_risco = ['chácara santo antônio', 'bosque da saúde', 'campo limpo', 'capela do socorro','m\'boi mirim', 'santo amaro', 'parelheiros', 'jardim emburá','itaquera', 'aricanduva', 'vila formosa', 'penha', 'mooca', 'jardim romano','vila maria', 'vila guilherme', 'santana', 'tucuruvi', 'jaçanã', 'tremembé','freguesia do ó', 'pirituba', 'jaraguá', 'jardim guançã','butantã', 'lapa', 'pinheiros', 'sé']
     if bairro in bairros_de_risco:
         print("⚠️ Cuidado! Essa área é considera de fácil alagamento\n\n")
     else:
