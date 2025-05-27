@@ -28,3 +28,14 @@ def minha_area():
 ##Função me_proteger
 def me_proteger():
     print("Se você escolheu essa opção. Fique atento as instruções \n ANTES DA INUNDAÇÃO \n1º Monitore alertas meteorológicos\n2º Tenha um plano de evacuação – Saiba quais rotas usar e onde estão os abrigos mais próximos.\n3º Monte um kit de emergência – Inclua água potável, alimentos não perecíveis, lanternas, pilhas, rádio, documentos importantes, remédios, roupas extras e itens de higiene.\n4º Desconecte aparelhos elétricos – Evite riscos de curtos-circuitos ou choques.\n5º Avalie a estrutura da sua casa – Se for uma área de risco, considere sair antes do alagamento.\n\n ⚠️DURANTE A INUNDAÇÃO⚠️\n -Mantenha a calma e acione a Defesa Civil (199) ou Corpo de Bombeiros (193).\n -Saia do local se as autoridades pedirem.\n -Nunca tente atravessar áreas alagadas a pé ou de carro. \n\n DEPOIS DA INUNDAÇÃO \n -Espere autorização das autoridades para retornar ao imóvel.\n -Evite contato com a água residual.\nAtualize seus documentos e registre os danos, caso precise de apoio do governo ou seguro.\n\n Essas instruções são conferidas por especialistas, proteja-se, a natureza não brinca!")
+
+##função situacao_atual
+def situacao_atual():
+    import random 
+    risco = random.choice(['baixo', 'moderado' , 'alto'])
+    if risco == "alto":
+        print("\n 🚨 Alerta! Chuva forte nas próximas horas com risco de alagamento, fique atento(a)!")
+    elif risco == "moderado"
+        print("\n⚠️ Atenção: Chuva moderada prevista nas próximas horas, fique atento(a)!")
+    else:
+        print("\n☀️ Sem chuva prevista para as próximas horas, aproveite o dia!")
