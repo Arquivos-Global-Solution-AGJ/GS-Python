@@ -14,8 +14,12 @@ def escolha_menu():
             situacao_atual()
         elif escolha == 4:
             contatos()
+        elif escolha == 5:
+            print("Obrigado por usar o SOS enchentes.")
+            break
+            return escolha
         else:
-            menu_principal()
+            print("Opção inexistente, digite de 1 a 5.")
 
 ##função minha_area
 def minha_area():
@@ -55,15 +59,15 @@ def main():
     while True:
         menu_principal()
         opcao = escolha_menu()
-        if opcao == "1":
+        if opcao == 1:
             minha_area()
-        elif opcao == "2":
+        elif opcao == 2:
             me_proteger()
-        elif opcao == "3":
+        elif opcao == 3:
             situacao_atual()
-        elif opcao == "4":
+        elif opcao == 4:
             contatos()
         else:
-            print("Obrigado por usar nosso sistema, cuide-se.")
             break
+            
 main()
